@@ -1,4 +1,6 @@
 {% load static %}
+{% extends 'core/base.html' %}
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -36,7 +38,7 @@
         </div>
     </header>
     
-
+{% block content %}
     <section id="catalogo">
             <div class="producto-card" >
                 <img src= "static/core/imagenes/product1.jpg" class="producto-card img">
@@ -137,6 +139,8 @@
                 </div>
             </div>    
     </section>
+{% endblock %}
+
 
     <footer>
         <p>&copy; 2024 Green Shop. Todos los derechos reservados.</p>

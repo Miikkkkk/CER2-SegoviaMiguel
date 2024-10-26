@@ -1,5 +1,5 @@
 {% load static %}
-
+{% extends 'core/base.html' %}
 
 <!DOCTYPE html>
 <html lang="es">
@@ -60,6 +60,8 @@
 
     </header>
 
+
+{% block content %}
     <section id="reciclaje">
         <h2 class="Solicitud_de_Reciclaje">Solicitud de Reciclaje</h2>
         <img src="imagenes/reciclaje.jpg" alt="Imagen de reciclaje" class="reciclaje-image">
@@ -96,7 +98,7 @@
             <input type="submit" value="Enviar Solicitud">
         </form>
     </section>
-
+{% endblock %}
     <footer>
         <p>&copy; 2024 Green Shop. Todos los derechos reservados.</p>
     </footer>

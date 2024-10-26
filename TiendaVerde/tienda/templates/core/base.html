@@ -1,27 +1,46 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Tienda Verde{% endblock %}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/estilos.css' %}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'index' %}">Tienda Verde</a>
-        <ul class="navbar-nav ml-auto">
-            {% if user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'ver_carrito' %}">Carrito</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a></li>
-            {% else %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'registro' %}">Registrarse</a></li>
-            {% endif %}
-        </ul>
-    </nav>
 
-    <div class="container">
-        {% block content %}{% endblock %}
+    <header>
+        <img src="{% static 'core/imagenes/logo.png' %}" alt="Tienda Verde Logo" class="logo">
+        <h1>Tienda Verde</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+                <li><a href="{% url 'solicitud' %}">Solicitud</a></li>
+
+                {% if user.is_authenticated %}
+                    <!-- Botón para Logout -->
+                    <li><a href="{% url 'logout' %}" class="btn">Cerrar sesión</a></li>
+                {% else %}
+                    <!-- Botón para Login  -->
+                    <li><a href="{% url 'login' %}" class="btn">Iniciar sesión</a></li>
+                    
+                    <!-- Botón para Registro -->
+                    <li><a href="{% url 'registro' %}" class="btn btn-primary">Registrarse</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Bloque de contenido específico de cada página -->
+    <div class="content">
+        {% block content %}
+        {% endblock %}
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Tienda Verde. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
