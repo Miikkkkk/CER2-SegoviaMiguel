@@ -19,6 +19,7 @@
                 <li><a href="{% url 'solicitud' %}">Solicitud</a></li>
 
                 {% if user.is_authenticated %}
+                    
                     <!-- Botón para Logout -->
                     <li><a href="{% url 'logout' %}" class="btn">Cerrar sesión</a></li>
                 {% else %}
