@@ -11,42 +11,37 @@
 <body>
 
     <header>
-        <h1>Tienda Verde</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'index' %}">Inicio</a></li>
-                <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
-                <li><a href="{% url 'solicitud' %}">Solicitud</a></li>
-
-
-                
-
-                {% if user.is_authenticated %}
-                    
-                    <!-- Botón para Logout -->
-                    <li><a href="{% url 'logout' %}" class="btn">Cerrar sesión</a></li>
-                {% else %}
-                    <!-- Botón para Login  -->
-                    <li><a href="{% url 'login' %}" class="btn">Iniciar sesión</a></li>
-                    
-                    <!-- Botón para Registro -->
-                    <li><a href="{% url 'registro' %}" class="btn btn-primary">Registrarse</a></li>
-                {% endif %}
-            </ul>
-
-            <div class="container">
-                <nav>
+        <div class="header-top">
+            <h1>Tienda Verde</h1>
+        </div>
+        <div class="header-bottom">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Inicio</a></li>
+                    <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+                    <li><a href="{% url 'solicitud' %}">Solicitud</a></li>
+                    {% if user.is_authenticated %}
+                        <!-- Botón para Logout -->
+                        <li><a href="{% url 'logout' %}" class="btn">Cerrar sesión</a></li>
+                    {% else %}
+                        <!-- Botón para Login  -->
+                        <li><a href="{% url 'login' %}" class="btn">Iniciar sesión</a></li>
+                        <!-- Botón para Registro -->
+                        <li><a href="{% url 'registro' %}" class="btn btn-primary">Registrarse</a></li>
+                    {% endif %}
+                </ul>
+                <!-- Carrito de compras -->
+                <div class="cart-container">
                     <i class="fa-solid fa-cart-shopping">
                         <div class="buy-card">
                             <button>Vaciar carrito</button>
                         </div>
                     </i>
-                </nav>
-            </div>
-        </nav>
-
+                </div>
+            </nav>
+        </div>
     </header>
-
+    
     <!-- Bloque de contenido específico de cada página -->
     <div class="content">
         {% block content %}
