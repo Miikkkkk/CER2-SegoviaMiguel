@@ -44,5 +44,11 @@ def registro(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('login')  # Redirige al login tras el registro
+            user = form.save()
+            login(request, user)  # Autentica automáticamente al usuario tras el registro
+            return redirect('catalogo')  # Redirige al catálogo tras registrarse
+    else:
+        form = UserCreationForm()
+    return render(request, 'core/registro.html', {'form': form})
+        
+        

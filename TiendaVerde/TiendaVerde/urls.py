@@ -17,13 +17,28 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from tienda import views
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
+    
+    # Rutas de páginas públicas
+    
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('index/', views.index, name='catalogo'),
     path('catalogo/', views.catalogo, name='catalogo'),
     path('registro/', views.registro, name='registro'),
     path('solicitud/', views.solicitud, name='solicitud'),
+    
+    
+    # Rutas de login y logout
+    path('login/', LoginView.as_view(template_name='core/login.html'), name='login'),  # Login
+    path('logout/', LogoutView.as_view(next_page='index'), name='logout'),  # Logout, redirige al inicio
+
+    
+    path('agregar_al_carrito/<int:producto_id>/', views.agregar_al_carrito, name='agregar_al_carrito'),  # Solo usuarios autenticados
+    path('ver_carrito/', views.ver_carrito, name='ver_carrito'),  # Vista de carrito solo para autenticados
+    
+    
 ]
 
