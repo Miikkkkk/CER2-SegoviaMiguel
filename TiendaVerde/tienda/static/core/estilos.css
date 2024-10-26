@@ -33,70 +33,52 @@
 
 }
 
-
 .container {
-
-    background-color:#2c6e49;
-
-
+    background-color: #2c6e49;
+    display: flex;
+    justify-content: flex-end; /* Alinea el contenido a la derecha */
+    align-items: center; /* Centra verticalmente el contenido */
 }
 
-.container nav{
-
-    width: 100%;
-    display:flex;
-    justify-content: flex-end;
+.container nav {
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
     padding: 15px;
     background-color: #2c6e49;
-    margin-bottom: 30px;
     color: #333;
 }
 
-
-
 .container nav i {
-
     font-size: 3em;
-    cursor:pointer
-
-
+    cursor: pointer;
+    position: relative;
 }
 
-.nav-card{
-
-    display: none
-
-}
-
-.container nav button{
-
+.nav-card {
     display: none;
-
 }
 
-.container nav i:hover > .buy-card{
+.container nav button {
+    display: none;
+}
 
+.container nav i:hover > .buy-card {
     width: 400px;
     height: 400px;
-    position:absolute;
+    position: absolute;
     right: 0;
     background-color: #99E65F;
-
 }
 
-
-.container nav i:hover .buy-card > button{
-
+.container nav i:hover .buy-card > button {
     display: block;
     width: 90%;
     padding: 1rem;
     margin: 10px auto;
-    background-color: transparent ;
+    background-color: transparent;
     border: solid thin #e1e1e1;
     color: #494848;
-    cursor:pointer
-
-
+    cursor: pointer;
 }
 
 
