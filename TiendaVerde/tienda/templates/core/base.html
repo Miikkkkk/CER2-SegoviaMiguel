@@ -21,13 +21,14 @@
                     <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
                     <li><a href="{% url 'solicitud' %}">Solicitud</a></li>
                     {% if user.is_authenticated %}
-                        <!-- Botón para Logout -->
-                        <li><a href="{% url 'logout' %}" class="btn">Cerrar sesión</a></li>
+                        <li>
+                            <form method="post" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn">Cerrar sesión</button>
+                            </form>
+                        </li>
                     {% else %}
-                        <!-- Botón para Login  -->
                         <li><a href="{% url 'login' %}" class="btn">Iniciar sesión</a></li>
-                        <!-- Botón para Registro -->
-                        <li><a href="{% url 'registro' %}" class="btn btn-primary">Registrarse</a></li>
                     {% endif %}
                 </ul>
                 <!-- Carrito de compras -->
@@ -50,7 +51,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Tienda Verde. Todos los derechos reservados.</p>
+        <p>© 2024 Tienda Verde. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>

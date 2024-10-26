@@ -129,5 +129,5 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_REDIRECT_URL = '/'  # Redirige a la página principal después de iniciar sesión
-LOGOUT_REDIRECT_URL = '/'  # Redirige a la página principal después de cerrar sesión
+LOGIN_REDIRECT_URL = 'index'  # Redirige a la página principal después de iniciar sesión
+LOGOUT_REDIRECT_URL = 'index'  # Redirige a la página principal después de cerrar sesión
