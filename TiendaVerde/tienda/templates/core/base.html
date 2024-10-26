@@ -21,13 +21,13 @@
                 {% if user.is_authenticated %}
                     
                     <!-- Botón para Logout -->
-                    <li><a href="{% url 'logout' %}" class="btn">Cerrar sesión</a></li>
+                    <li><a href="{% url 'logout' %}">Cerrar sesión</a> <a class="btn">Cerrar sesión</a></li>
                 {% else %}
                     <!-- Botón para Login  -->
-                    <li><a href="{% url 'login' %}" class="btn">Iniciar sesión</a></li>
+                    <li><a href="{% url 'login' %}">Iniciar sesión</a> <a class="btn">Iniciar sesión</a></li>
                     
                     <!-- Botón para Registro -->
-                    <li><a href="{% url 'registro' %}" class="btn btn-primary">Registrarse</a></li>
+                    <li><a href="{% url 'registro' %}">Registrarse</a> <a  class="btn btn-primary">Registrarse</a></li>
                 {% endif %}
             </ul>
         </nav>
