@@ -6,6 +6,7 @@
     <title>{% block title %}Tienda Verde{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'core/estilos.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -16,21 +17,10 @@
                 <li><a href="{% url 'index' %}">Inicio</a></li>
                 <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
                 <li><a href="{% url 'solicitud' %}">Solicitud</a></li>
-                <div class= "container">
-                    <nav>
-                        <i class="fa-solid fa-cart-shopping">
-                            <div class="buy-card"></div>
-            
-                                <button> Vaciar carrito </button>
-            
-                        </i>
-            
-            
-                    </nav>
+
+
                 
-                </div>  
-            </header>
-                
+
                 {% if user.is_authenticated %}
                     
                     <!-- Botón para Logout -->
@@ -43,7 +33,20 @@
                     <li><a href="{% url 'registro' %}" class="btn btn-primary">Registrarse</a></li>
                 {% endif %}
             </ul>
+
+            <div class="container">
+                <nav>
+                    <i class="fa-solid fa-cart-shopping">
+                        <div class="buy-card">
+                            <button>Vaciar carrito</button>
+                        </div>
+                    </i>
+                </nav>
+            </div>
+
         </nav>
+
+    </header>
 
     <!-- Bloque de contenido específico de cada página -->
     <div class="content">
