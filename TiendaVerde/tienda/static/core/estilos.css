@@ -327,4 +327,51 @@ footer {
     margin-top: 3rem;
 }
 
+.carrito-title {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+.carrito-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.carrito-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.carrito-table th, .carrito-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.carrito-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.carrito-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.total {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.checkout {
+    text-align: right;
+    margin-top: 20px;
+}
 

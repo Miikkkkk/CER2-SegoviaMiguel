@@ -6,19 +6,25 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=10, decimal_places=2)
-    stock = models.IntegerField(default=0)
-    imagen = models.ImageField(upload_to= "static/imagenes", null=True, blank=True)
+    stock = models.IntegerField()
+    imagen = models.CharField(max_length=100, default='porduct1.jpg')  # Nombre del archivo de imagen
 
     def __str__(self):
         return self.nombre
 
 class Carrito(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    cantidad = models.PositiveIntegerField(default=1)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.cantidad} x {self.producto.nombre}'
+        return f"Carrito de {self.usuario.username}"
+
+class ItemCarrito(models.Model):
+    carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)  # Valor predeterminado
+
+    def __str__(self):
+        return f"{self.cantidad} x {self.producto.nombre}"
     
 class Pedido(models.Model):
     

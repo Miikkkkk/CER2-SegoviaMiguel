@@ -29,8 +29,9 @@ urlpatterns = [
     path('solicitud/', views.solicitud, name='solicitud'),
     path('login/', auth_views.LoginView.as_view(template_name='core/login.html'), name='login'),  # Login
     path('logout/', auth_views.LogoutView.as_view(next_page='index'), name='logout'),  # Logout, redirige al inicio
-    path('agregar_al_carrito/<int:producto_id>/', views.agregar_al_carrito, name='agregar_al_carrito'),  # Solo usuarios autenticados
-    path('ver_carrito/', views.ver_carrito, name='ver_carrito'),  # Vista de carrito solo para autenticados
+    path('agregar/<int:producto_id>/', views.agregar_al_carrito, name='agregar_al_carrito'),
+    path('carrito/', views.ver_carrito, name='ver_carrito'),
+    path('eliminar/<int:item_id>/', views.eliminar_del_carrito, name='eliminar_del_carrito'),
 ]
 
 

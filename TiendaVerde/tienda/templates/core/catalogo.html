@@ -40,104 +40,139 @@
     
 {% block content %}
     <section id="catalogo">
-            <div class="producto-card" >
-                <img src= "static/core/imagenes/product1.jpg" class="producto-card img">
-                <div class="body-card">
-                <h5 class="title-card">Vaso de bambu reciclable</h5>
-                <p class="text-card">Vaso de bambú reciclable, útil para el uso diario y soporta cualquier liquido, ya sea un liquido frio o caliente</p>
-                <button> Agregar al carrito </button>
-                </div>
+        {% for producto in productos %}
+        <div class="producto-card">
+            <img src="{% static 'core/imagenes/' %}{{ producto.imagen }}" class="producto-card img">
+            <div class="body-card">
+                <h5 class="title-card">{{ producto.nombre }}</h5>
+                <p class="text-card">{{ producto.descripcion }}</p>
+                <p>Precio: {{ producto.precio }}</p>
+                <p>Stock: {{ producto.stock }}</p>
+                <a href="{% url 'agregar_al_carrito' producto.id %}">Agregar al Carrito</a>
             </div>
+        </div>
 
-            
-            <div class="producto-card"  >
-                <img src= "static/core/imagenes/product2.jpg" class="producto-card img">
-                <div class="body-card">
-                <h5 class="title-card">Cepillos de bambú biodegradable</h5>
-                <p class="text-card">Cepillos de bambú amigables con el medio ambiente, 100% natural y biodegradable</p>
-                <button> Agregar al carrito </button>
-                </div>
+        <div class="producto-card">
+            <img src="{% static 'core/imagenes/' %}{{ product2.imagen }}" class="producto-card img">
+            <div class="body-card">
+                <h5 class="title-card">{{ producto.nombre }}</h5>
+                <p class="text-card">{{ producto.descripcion }}</p>
+                <p>Precio: {{ producto.precio }}</p>
+                <p>Stock: {{ producto.stock }}</p>
+                <a href="{% url 'agregar_al_carrito' producto.id %}">Agregar al Carrito</a>
             </div>
-            <div class="producto-card">
-                <img src= "static/core/imagenes/Vestido.jpg" class="producto-card img">
-                <div class="body-card">
-                <h5 class="title-card">Vestido de lana estilo invierno</h5>
-                <p class="text-card"> Vestido 100% biodegradable con sutiles detalles que propocionan una mayor belleza</p>
-                <button> Agregar al carrito </button>
-                </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="{% static 'core/imagenes/' %}{{ Vestido.imagen }}" class="producto-card img">
+            <div class="body-card">
+                <h5 class="title-card">{{ producto.nombre }}</h5>
+                <p class="text-card">{{ producto.descripcion }}</p>
+                <p>Precio: {{ producto.precio }}</p>
+                <p>Stock: {{ producto.stock }}</p>
+                <a href="{% url 'agregar_al_carrito' producto.id %}">Agregar al Carrito</a>
             </div>
-            <div class="producto-card">
-                <img src= "static/core/imagenes/Polera.jpg" class="producto-card img">
-                <div class="body-card">
-                <h5 class="title-card">Camisa unisex verde estilo floreado</h5>
-                <p class="text-card">Camisa 100% algodón orgánico idea para dias con mucha temperatura  </p>
-                <button> Agregar al carrito </button>
-                </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="{% static 'core/imagenes/' %}{{ Polera.imagen }}" class="producto-card img">
+            <div class="body-card">
+                <h5 class="title-card">{{ producto.nombre }}</h5>
+                <p class="text-card">{{ producto.descripcion }}</p>
+                <p>Precio: {{ producto.precio }}</p>
+                <p>Stock: {{ producto.stock }}</p>
+                <a href="{% url 'agregar_al_carrito' producto.id %}">Agregar al Carrito</a>
             </div>
-            <div class="producto-card">
-                <img src= "static/core/imagenes/cremas.jpg" class="producto-card img">
-                <div class="body-card">
-                <h5 class="title-card">Cremas faciales 100% naturales</h5>
-                <p class="text-card">Cremas faciales hechas totalmente de productos naturales (Cocó, limón, miel,hierbas)  </p>
-                <button> Agregar al carrito </button>
-                </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="{% static 'core/imagenes/' %}{{ cremas.imagen }}" class="producto-card img">
+            <div class="body-card">
+                <h5 class="title-card">{{ producto.nombre }}</h5>
+                <p class="text-card">{{ producto.descripcion }}</p>
+                <p>Precio: {{ producto.precio }}</p>
+                <p>Stock: {{ producto.stock }}</p>
+                <a href="{% url 'agregar_al_carrito' producto.id %}">Agregar al Carrito</a>
             </div>
-            <div class="producto-card">
-                <img src= "static/core/imagenes/bambuutenc.jpg" class="producto-card img">
-                <div class="body-card">
-                <h5 class="title-card">Utencilios de cocina de bambú y madera</h5>
-                <p class="text-card"> Set de utencilios hechos de bambú y madera, biodegradables y amigables con el medio ambiente  </p>
-                <button> Agregar al carrito </button>
-                </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="{% static 'core/imagenes/' %}{{ bambuutenc.imagen }}" class="producto-card img">
+            <div class="body-card">
+                <h5 class="title-card">{{ producto.nombre }}</h5>
+                <p class="text-card">{{ producto.descripcion }}</p>
+                <p>Precio: {{ producto.precio }}</p>
+                <p>Stock: {{ producto.stock }}</p>
+                <a href="{% url 'agregar_al_carrito' producto.id %}">Agregar al Carrito</a>
             </div>
-            <div class="producto-card">
-                <img src= "static/core/imagenes/PLATOBAMBU.jpg" class="producto-card img">
-                <div class="body-card">
-                <h5 class="title-card">Set de platos de bambú reutilizables</h5>
-                <p class="text-card"> Platos de cocina hechos de bambú, reutilizables y biodegradables  </p>
-                <button> Agregar al carrito </button>
-                </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="{% static 'core/imagenes/' %}{{ PLATOBAMBU.imagen }}" class="producto-card img">
+            <div class="body-card">
+                <h5 class="title-card">{{ producto.nombre }}</h5>
+                <p class="text-card">{{ producto.descripcion }}</p>
+                <p>Precio: {{ producto.precio }}</p>
+                <p>Stock: {{ producto.stock }}</p>
+                <a href="{% url 'agregar_al_carrito' producto.id %}">Agregar al Carrito</a>
             </div>
-            <div class="producto-card">
-                <img src= "static/core/imagenes/pantalones.jpg" class="producto-card img">
-                <div class="body-card">
-                <h5 class="title-card">Pantalones cian 100% algodón</h5>
-                <p class="text-card"> Pantalones de hombre hechos de algodón para perfectos para cualquier salida, formal o semiformal </p>
-                <button> Agregar al carrito </button>
-                </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="{% static 'core/imagenes/' %}{{ pantalones.imagen }}" class="producto-card img">
+            <div class="body-card">
+                <h5 class="title-card">{{ producto.nombre }}</h5>
+                <p class="text-card">{{ producto.descripcion }}</p>
+                <p>Precio: {{ producto.precio }}</p>
+                <p>Stock: {{ producto.stock }}</p>
+                <a href="{% url 'agregar_al_carrito' producto.id %}">Agregar al Carrito</a>
             </div>
-            <div class="producto-card">
-                <img src= "static/core/imagenes/aretes.jpg" class="producto-card img">
-                <div class="body-card">
-                <h5 class="title-card">Aretes de bambú con perlas</h5>
-                <p class="text-card">  aretes de bambú con lindas perlas azules incrustadas</p>
-                <button> Agregar al carrito </button>
-                </div>
-            </div>   
-            <div class="producto-card">
-                <img src= "static/core/imagenes/chaqueta.jpg" class="producto-card img">
-                <div class="body-card">
-                <h5 class="title-card">Cortavientos Reciclable</h5>
-                <p class="text-card"> Cortavientos confeccionado con material biodegradable y reciclable</p>
-                <button> Agregar al carrito </button>
-                </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="{% static 'core/imagenes/' %}{{ aretes.imagen }}" class="producto-card img">
+            <div class="body-card">
+                <h5 class="title-card">{{ producto.nombre }}</h5>
+                <p class="text-card">{{ producto.descripcion }}</p>
+                <p>Precio: {{ producto.precio }}</p>
+                <p>Stock: {{ producto.stock }}</p>
+                <a href="{% url 'agregar_al_carrito' producto.id %}">Agregar al Carrito</a>
             </div>
-            <div class="producto-card">
-                <img src= "static/core/imagenes/Juego.jpg" class="producto-card img">
-                <div class="body-card">
-                <h5 class="title-card">Juego de loza de bambú</h5>
-                <p class="text-card"> hecho por fibras de bambú reciclables</p>
-                <button> Agregar al carrito </button>
-                </div>
-            </div>   
-            <div class="producto-card">
-                <img src= "static/core/imagenes/Tazas.jpg" class="producto-card img">
-                <div class="body-card">
-                <h5 class="title-card">Juego de Tazas Bambú </h5>
-                <p class="text-card"> Tazas de todos los tamaños reciclables</p>
-                <button> Agregar al carrito </button>
-                </div>
-            </div>    
+        </div>
+
+        <div class="producto-card">
+            <img src="{% static 'core/imagenes/' %}{{ chaqueta.imagen }}" class="producto-card img">
+            <div class="body-card">
+                <h5 class="title-card">{{ producto.nombre }}</h5>
+                <p class="text-card">{{ producto.descripcion }}</p>
+                <p>Precio: {{ producto.precio }}</p>
+                <p>Stock: {{ producto.stock }}</p>
+                <a href="{% url 'agregar_al_carrito' producto.id %}">Agregar al Carrito</a>
+            </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="{% static 'core/imagenes/' %}{{ Juego.imagen }}" class="producto-card img">
+            <div class="body-card">
+                <h5 class="title-card">{{ producto.nombre }}</h5>
+                <p class="text-card">{{ producto.descripcion }}</p>
+                <p>Precio: {{ producto.precio }}</p>
+                <p>Stock: {{ producto.stock }}</p>
+                <a href="{% url 'agregar_al_carrito' producto.id %}">Agregar al Carrito</a>
+            </div>
+        </div>
+
+        <div class="producto-card">
+            <img src="{% static 'core/imagenes/' %}{{ Tazas.imagen }}" class="producto-card img">
+            <div class="body-card">
+                <h5 class="title-card">{{ producto.nombre }}</h5>
+                <p class="text-card">{{ producto.descripcion }}</p>
+                <p>Precio: {{ producto.precio }}</p>
+                <p>Stock: {{ producto.stock }}</p>
+                <a href="{% url 'agregar_al_carrito' producto.id %}">Agregar al Carrito</a>
+            </div>
+        </div>
+        {% endfor %}
     </section>
 {% endblock %}
 
