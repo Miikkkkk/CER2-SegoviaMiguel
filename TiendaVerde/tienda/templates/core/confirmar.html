@@ -1,12 +1,15 @@
-
 {% extends 'core/base.html' %}
 
 {% load static %}
 {% load carrito_extras %}
 
+{% block title %}Confirmar Pedido{% endblock %}
+
 {% block content %}
-<h2 class="carrito-title">Tu Carrito de Compras</h2>
-<div class="carrito-container">
+<div class="container mt-5">
+    <h1>Confirmar Pedido</h1>
+
+    <h3>Resumen de tu pedido</h3>
     <table class="carrito-table">
         <thead>
             <tr>
@@ -31,12 +34,15 @@
             {% endfor %}
         </tbody>
     </table>
-    <div class="total">
-        <h3>Total: {{ items|carrito_total }}</h3>
-    </div>
-    <div class="checkout">
-        <a href="{% url 'confirmar' %}" class="btn btn-primary">Proceder al Pago</a>
+
+    <div class="d-flex justify-content-between">
+        <h3>Total: {{ carrito.total|floatformat:2 }} $</h3>
+        <form method="post">
+            {% csrf_token %}
+            <div class="checkout">
+                <a href="{% url 'pedido' %}" class="btn btn-primary">Ver pedidos</a>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}
-

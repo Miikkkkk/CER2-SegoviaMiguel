@@ -5,6 +5,7 @@ from .models import Carrito, Producto, ItemCarrito
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .models import Pedido
 
 
 def registro(request):
@@ -71,5 +72,48 @@ def registro(request):
     else:
         form = UserCreationForm()
     return render(request, 'core/registro.html', {'form': form})
+
+
+@login_required
+def pedido(request):
+    # Obtener los pedidos del usuario actual
+    pedidos = Pedido.objects.filter(usuario=request.user).order_by('-fecha')  
+
+    return render(request, 'core/pedidos.html', {'pedidos': pedidos})
+
+
+@login_required
+def confirmar_pago(request):
+    # Obtener el carrito del usuario
+    try:
+        carrito = Carrito.objects.get(usuario=request.user)  
+    except Carrito.DoesNotExist:
+        # Si no hay carrito asociado, redirige al carrito vacío
+        return redirect('carrito')
+
+    # Verificar si el carrito no está vacío
+    if not carrito.itemcarrito_set.exists():
+        return redirect('carrito')  # Redirige al carrito si está vacío
+
+    if request.method == 'POST':
+        # Crear el pedido solo si no existe un pedido para este carrito
+        pedido = Pedido.objects.create(
+            usuario=request.user,  # Cambiado 'cliente' por 'usuario'
+            carrito=carrito,  # Asociar el carrito con el pedido
+            total=carrito.total,
+            estado='PEND',
+        )
+
+        # Vaciar el carrito anterior
+        carrito.itemcarrito_set.all().delete()
+
+        # **No crear un nuevo carrito si ya existe uno**
+        carrito.total = 0
+        carrito.save()
+
+        # Redirigir al historial de pedidos
+        return redirect('pedidos_cliente')
+
+    return render(request, 'core/confirmar.html', {'carrito': carrito})
         
         

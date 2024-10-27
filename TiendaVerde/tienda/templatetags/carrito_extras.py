@@ -10,3 +10,5 @@ def multiply(value, arg):
 def carrito_total(items):
     total = sum(item.cantidad * item.producto.precio for item in items)
     return total
+
+
