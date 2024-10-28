@@ -375,3 +375,27 @@ footer {
     margin-top: 20px;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Hace que ocupe la altura completa de la pantalla */
+}
+
+.content {
+    flex: 1; /* Expande el contenido para ocupar el espacio disponible */
+    padding: 20px; /* Ajusta el padding según sea necesario */
+}
+
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+}

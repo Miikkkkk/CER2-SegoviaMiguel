@@ -76,44 +76,34 @@ def registro(request):
 
 @login_required
 def pedido(request):
-    # Obtener los pedidos del usuario actual
-    pedidos = Pedido.objects.filter(usuario=request.user).order_by('-fecha')  
-
+    pedidos = Pedido.objects.filter(usuario=request.user).order_by('-fecha_pedido')
     return render(request, 'core/pedidos.html', {'pedidos': pedidos})
 
 
 @login_required
 def confirmar_pago(request):
-    # Obtener el carrito del usuario
-    try:
-        carrito = Carrito.objects.get(usuario=request.user)  
-    except Carrito.DoesNotExist:
-        # Si no hay carrito asociado, redirige al carrito vacío
-        return redirect('carrito')
-
-    # Verificar si el carrito no está vacío
-    if not carrito.itemcarrito_set.exists():
-        return redirect('carrito')  # Redirige al carrito si está vacío
-
     if request.method == 'POST':
-        # Crear el pedido solo si no existe un pedido para este carrito
-        pedido = Pedido.objects.create(
-            usuario=request.user,  # Cambiado 'cliente' por 'usuario'
-            carrito=carrito,  # Asociar el carrito con el pedido
-            total=carrito.total,
-            estado='PEND',
-        )
+        # Obtener el carrito del usuario
+        carrito = Carrito.objects.get(usuario=request.user)
+        items = ItemCarrito.objects.filter(carrito=carrito)
 
-        # Vaciar el carrito anterior
-        carrito.itemcarrito_set.all().delete()
+        # Crear un nuevo pedido
+        pedido = Pedido.objects.create(usuario=request.user, estado='pendiente')
 
-        # **No crear un nuevo carrito si ya existe uno**
-        carrito.total = 0
-        carrito.save()
 
-        # Redirigir al historial de pedidos
-        return redirect('pedidos_cliente')
+        # Vaciar el carrito después de confirmar el pedido
+        items.delete()
 
-    return render(request, 'core/confirmar.html', {'carrito': carrito})
-        
+        # Redirigir a la página de pedidos
+        return redirect('pedido')  # Asegúrate de que esta URL esté configurada
+
+    # Si el método no es POST, cargar la página de confirmación
+    else:
+        carrito = Carrito.objects.get(usuario=request.user)
+        items = ItemCarrito.objects.filter(carrito=carrito)
+
+    return render(request, 'core/confirmar.html', {
+        'items': items,
+        'carrito': carrito
+    }) 
         

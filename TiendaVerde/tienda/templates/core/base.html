@@ -10,39 +10,38 @@
 </head>
 <body>
 
-    <header>
-        <div class="header-top">
-            <h1>Tienda Verde</h1>
+    <div class="wrapper">
+        <header>
+            <div class="header-top">
+                <h1>Tienda Verde</h1>
+            </div>
+            <div class="header-bottom">
+                <nav>
+                    <ul>
+                        <li><a href="{% url 'index' %}">Inicio</a></li>
+                        <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+                        <li><a href="{% url 'solicitud' %}">Solicitud</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'ver_carrito' %}">Carrito</a></li>
+                            <li>
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn">Cerrar sesión</button>
+                                </form>
+                            </li>
+                        {% else %}
+                            <li><a href="{% url 'login' %}" class="btn">Iniciar sesión</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <!-- Bloque de contenido específico de cada página -->
+        <div class="content">
+            {% block content %}
+            {% endblock %}
         </div>
-        <div class="header-bottom">
-            <nav>
-                <ul>
-                    <li><a href="{% url 'index' %}">Inicio</a></li>
-                    <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
-                    <li><a href="{% url 'solicitud' %}">Solicitud</a></li>
-                    {% if user.is_authenticated %}
-                        <li>
-                            <form method="post" action="{% url 'logout' %}">
-                                {% csrf_token %}
-                                <button type="submit" class="btn">Cerrar sesión</button>
-                            </form>
-                        </li>
-                    {% else %}
-                        <li><a href="{% url 'login' %}" class="btn">Iniciar sesión</a></li>
-                    {% endif %}
-                </ul>
-        </div>
-    </header>
-    
-    <!-- Bloque de contenido específico de cada página -->
-    <div class="content">
-        {% block content %}
-        {% endblock %}
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2024 Tienda Verde. Todos los derechos reservados.</p>
-    </footer>
 </body>
 </html>
