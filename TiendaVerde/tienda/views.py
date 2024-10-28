@@ -31,7 +31,7 @@ def agregar_al_carrito(request, producto_id):
     if not created:
         item.cantidad += 1
     else:
-        item.cantidad = 1  # Asegúrate de inicializar la cantidad
+        item.cantidad = 1 
     item.save()
     return redirect('ver_carrito')
 
@@ -62,17 +62,6 @@ def catalogo(request):
 def solicitud(request):
     return render(request, 'core/solicitud.html')
 
-def registro(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)  # Autentica automáticamente al usuario tras el registro
-            return redirect('catalogo')  # Redirige al catálogo tras registrarse
-    else:
-        form = UserCreationForm()
-    return render(request, 'core/registro.html', {'form': form})
-
 
 @login_required
 def pedido(request):
@@ -95,7 +84,7 @@ def confirmar_pago(request):
         items.delete()
 
         # Redirigir a la página de pedidos
-        return redirect('pedido')  # Asegúrate de que esta URL esté configurada
+        return redirect('pedido') 
 
     # Si el método no es POST, cargar la página de confirmación
     else:
